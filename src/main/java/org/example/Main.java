@@ -16,6 +16,10 @@ public class Main {
         System.out.println("-------------Punto 2-------------");
         main.insertarTermino(poliP, coeP, expoP);
 
+    //Ejercicio taller #2
+        System.out.println("-------------Punto 3-------------");
+        main.sumarPares(vecA, vecB);
+
     }
 
     public void sonIguales(int vecA[], int vecB[]) {
@@ -63,6 +67,43 @@ public class Main {
             }
         } else {
             System.out.println("El exponente ingresado es mayor que el grado del polinomio.");
+        }
+
+
+    }
+
+
+    public void sumarPares( int vecA[], int vecB[]){
+
+        int vecC[]= new int [vecA[0]];
+
+        int i=1;
+        int j=1;
+        int k=1;
+        int coeA=0;
+        int coeB=0;
+        int expoA=0;
+        int expoB=0;
+        if(vecA[0]!= vecB[0]){
+
+            System.out.println("Los polinomios son de diferente grado.");
+        }
+        while (i< vecA[0]+2 && j < vecB[0]+2) {
+
+                  expoA=vecA[0]+1-i;
+                  expoB=vecA[0]+1-i;
+
+                 if(expoA % 2==0 && expoB % 2==0){
+                     vecC[k]= vecA[i]+vecB[j];
+                     k++;
+                 }
+            i++;
+            j++;
+        }
+
+        for(k=1;k<vecC.length;k++){
+
+            System.out.println(vecC[k]);
         }
 
 
