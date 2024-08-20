@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -11,14 +14,34 @@ public class Main {
         main.sonIguales(vecA, vecB);
     // Ejercicio taller #2
         int poliP[] = {4, 3, 4, 5, 6, 7};
+       // Exponte donde se desea ingresar el coeficiente.
         int expoP = 3;
         int coeP = 7;
         System.out.println("-------------Punto 2-------------");
         main.insertarTermino(poliP, coeP, expoP);
 
-    //Ejercicio taller #2
+    //Ejercicio taller #3
         System.out.println("-------------Punto 3-------------");
         main.sumarPares(vecA, vecB);
+
+    //Ejercicio taller #4
+        System.out.println("-------------Punto 4-------------");
+        int vecEva[]={4,6,7,8,-9,12};
+        System.out.println("Vector a evaluar es:");
+        for(int i=0;i<vecEva.length;i++){
+            System.out.println(vecEva[i]+ " ");
+        }
+        System.out.println();
+        main.evaluarPolinomio(vecEva);
+    //Ejercicio taller #5
+        System.out.println("-------------Punto 5-------------");
+
+        PolinomioManager gestor = new PolinomioManager();
+
+        int vec5[]= {4,5,6,-7,9,-12};
+        gestor.mostrar(vec5);
+
+
 
     }
 
@@ -100,7 +123,7 @@ public class Main {
             i++;
             j++;
         }
-
+        System.out.println("Vector C:");
         for(k=1;k<vecC.length;k++){
 
             System.out.println(vecC[k]);
@@ -108,5 +131,53 @@ public class Main {
 
 
     }
+
+
+    //Se crea clase estatica para permitir alamcenar el o los polinomios en un arraylist y sin necesidad que el metodo reciba este como parametro.
+
+    public static class PolinomioManager {
+        private List<String> polinomios = new ArrayList<>(); // Lista para almacenar los polinomios
+
+        public void mostrar(int vec5[]) {
+            String polinomio = "";
+            int expo = 0;
+            for (int i = 1; i < vec5[0] + 2; i++) {
+                expo = vec5[0] + 1 - i;
+                if (vec5[i] != 0) {
+                    if (vec5[i] > 0) {
+                        polinomio = polinomio + " + " + vec5[i] + " X^" + expo;
+                    } else {
+                        polinomio = polinomio + " - " + Math.abs(vec5[i]) + " X^" + expo;
+                    }
+                }
+            }
+            System.out.println("Polinomio resultante del vector: ");
+            System.out.println(polinomio);
+            polinomios.add(polinomio); // Almacenar el polinomio en la lista
+
+            // Mostrar todos los polinomios almacenados mediante el uso de un for each.
+            System.out.println("El(los) polinomio(s) almacenado(s) es(son): ");
+            for (String p : polinomios) {
+                System.out.println(p);
+            }
+        }
+    }
+    public void evaluarPolinomio(int vecEva[]){
+
+        System.out.println("En esta caso se evaluará el polinomio por 1.");
+
+        int evaluar=1;
+        int i=0;
+        int suma=0;
+        for(i=1;i<vecEva[0]+2;i++){
+            int multi= vecEva[i]*1;
+
+                suma = suma + multi;
+
+        }
+        System.out.println("Su evaluación es : "+suma);
+
+    }
+
 }
 
