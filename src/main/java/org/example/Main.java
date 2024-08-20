@@ -170,7 +170,7 @@ public class Main {
         int i=0;
         int suma=0;
         for(i=1;i<vecEva[0]+2;i++){
-            int multi= vecEva[i]*1;
+            int multi= vecEva[i]*evaluar;
 
                 suma = suma + multi;
 
