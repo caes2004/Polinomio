@@ -33,6 +33,14 @@ public class Main {
         }
         System.out.println();
         main.evaluarPolinomio(vecEva);
+        System.out.println("-------------Derivar-------------");
+        int vecDev[]={3,3,4,5,6};
+        System.out.println("Vector a derivar es:");
+        for(int i=0;i<vecDev.length;i++){
+            System.out.println(vecDev[i]+ " ");
+        }
+        main.derivarPolinomio(vecDev);
+
     //Ejercicio taller #5
         System.out.println("-------------Punto 5-------------");
 
@@ -177,6 +185,30 @@ public class Main {
         }
         System.out.println("Su evaluación es : "+suma);
 
+    }
+
+    public void derivarPolinomio(int vecDev[]){
+
+        int i=0;
+        int expo=0;
+        int opeExpo=0;
+        String polinomio="";
+
+        for (i=1;i<vecDev[0]+2;i++){
+            expo= vecDev[0]+1 - i;
+            opeExpo= expo-1;
+            //polinomio=vecDev[i]*expo;
+            if(vecDev[i]!=0){
+                if (vecDev[i] > 0) {
+                    polinomio=polinomio + " + " +(vecDev[i]*(expo))+"X^"+opeExpo;
+
+                }else{
+
+                    polinomio=polinomio + " - " +((vecDev[i]*-1)*(expo))+"X^"+opeExpo;
+                }
+            }
+        }
+        System.out.println(polinomio);
     }
 
 }
