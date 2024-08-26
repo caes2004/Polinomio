@@ -13,10 +13,10 @@ public class Main {
         System.out.println("-------------Punto 1-------------");
         main.sonIguales(vecA, vecB);
     // Ejercicio taller #2
-        int poliP[] = {4, 3, 4, 5, 6, 7};
-       // Exponte donde se desea ingresar el coeficiente.
-        int expoP = 3;
-        int coeP = 7;
+        int poliP[] = {4, 5, 3, 0, 6, 2}; // Vector inicial
+        int expoP = 2; // Exponente donde se desea ingresar el nuevo coeficiente
+        int coeP = 4; // Nuevo coeficiente a insertar
+
         System.out.println("-------------Punto 2-------------");
         main.insertarTermino(poliP, coeP, expoP);
 
@@ -81,27 +81,30 @@ public class Main {
 
     }
 
-    public void insertarTermino(int poliP[], int expoP, int coeP) {
+    public void insertarTermino(int vec[], int coef, int exp){
+        int pos = vec[0] + 1 - exp;
 
-        int gradoP0 = poliP[0];
-
-        if (expoP<= gradoP0) {
-
-            for (int i = 1; i < poliP[0] + 2; i++) {
-
-                if (poliP[0] + 2 - i == expoP) {
-                    poliP[i]=coeP;
-                }
+        if ((exp <= vec[0]) && (exp >= 0)) {
+            if (vec[pos] == 0) {
+                vec[pos] = coef; // Insertar el nuevo coeficiente en caso de que este fuera cero.
+            } else {
+                vec[pos] += coef; // Sumar al coeficiente existente.
             }
-            for (int i = 1; i < poliP[0] + 2; i++) {
-                System.out.println(poliP[i]);
+
+            // Imprimir el polinomio actualizado
+            for (int i = 1; i < vec[0] + 2; i++) {
+                int exponenteActual = vec[0] + 1 - i;
+                System.out.print(vec[i] + "x^" + exponenteActual + " | ");
             }
+            System.out.println();
+
         } else {
-            System.out.println("El exponente ingresado es mayor que el grado del polinomio.");
+            System.out.println("El exponente no corresponde al polinomio");
         }
-
-
     }
+
+
+
 
 
     public void sumarPares( int vecA[], int vecB[]){
@@ -194,7 +197,7 @@ public class Main {
         int opeExpo=0;
         String polinomio="";
 
-        for (i=1;i<vecDev[0]+2;i++){
+        for (i=1;i<vecDev[0]+1;i++){
             expo= vecDev[0]+1 - i;
             opeExpo= expo-1;
             //polinomio=vecDev[i]*expo;
